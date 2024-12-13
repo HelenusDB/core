@@ -16,7 +16,7 @@
 package com.helenusdb.core;
 
 /**
- * Represents an object that has an identifier (an 'id' property).
+ * Represents an object that has an identity (an 'id' property).
  * 
  * @author toddf
  * @since Mar 2, 2018

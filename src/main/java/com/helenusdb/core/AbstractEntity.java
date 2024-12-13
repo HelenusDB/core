@@ -17,9 +17,16 @@ package com.helenusdb.core;
 
 /**
  * An entity (has an {@link Identifier}) as well as a single Object ID ('id'
- * property).
+ * property). This can be used as a base class for entities that have a single
+ * unique identifier property.
  * 
- * @author toddf
+ * The {@link #getIdentifier()} method is implemented to return the ID as the
+ * single component of the Identifier. Subclasses may override this method to
+ * provide an alternate Identifier that reflects an alternate key or composite 
+ * key.
+ * 
+ * @param <T> the type of the object ID property.
+ * @author Todd Fredrich
  * @since Oct 6, 2017
  */
 public abstract class AbstractEntity<T>
@@ -29,6 +36,25 @@ implements Entity<T>
 	 * The object ID for this Entity.
 	 */
 	private T id;
+
+	/**
+	 * Default constructor.
+	 */
+	AbstractEntity()
+	{
+		super();
+	}
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param objectId the object ID for this Entity.
+	 */
+	AbstractEntity(T objectId)
+	{
+		this();
+		setId(objectId);
+	}
 
 	/**
 	 * The default implementation returns the Object ID ('id' property) as the
